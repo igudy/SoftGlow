@@ -1,88 +1,167 @@
-import { FaInstagram, FaTwitter, FaQuoteLeft } from "react-icons/fa";
-import { BsPlayFill } from "react-icons/bs";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import woman from "../assets/woman.png";
-import client1 from "../assets/woman.png";
-import client2 from "../assets/woman.png";
-import client3 from "../assets/woman.png";
+import {
+  FaInstagram,
+  FaTwitter,
+  FaFacebook,
+  FaQuoteLeft,
+  FaArrowRight,
+} from "react-icons/fa";
+import woman from "../../public/images/woman.png";
+import arrowUp from "../../public/icons/arrow-down.png";
+import arrowDown from "../../public/icons/arrow-up.png";
+import star from "../../public/icons/star.png";
+import { IoSearch } from "react-icons/io5";
+import img1 from "../../public/images/img1.png";
+import img2 from "../../public/images/img2.png";
+import img3 from "../../public/images/img3.png";
+import img4 from "../../public/images/img4.png";
+import buttonContainerImg from "../../public/images/buttonContainer.png";
+
+const imagesSide = [
+  {
+    id: 1,
+    images: img1,
+  },
+  {
+    id: 2,
+    images: img2,
+  },
+  {
+    id: 3,
+    images: img3,
+  },
+  {
+    id: 4,
+    images: img4,
+  },
+];
 
 function Hero() {
   return (
-    // <section className="font-[Garamond] bg-[#FDF9F4] min-h-screen w-full">
-    //   <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-    //     {/* Left Sidebar */}
-    //     <div className="lg:col-span-1 flex flex-col justify-between items-center text-gray-600">
-    //       <div className="rotate-180 text-xl cursor-pointer">↑</div>
-    //       <div className="flex flex-col space-y-6 mt-4">
-    //         <FaInstagram className="text-xl hover:text-gray-800 transition" />
-    //         <FaQuoteLeft className="text-xl hover:text-gray-800 transition" />
-    //         <FaTwitter className="text-xl hover:text-gray-800 transition" />
-    //       </div>
-    //       <div className="rotate-0 text-xl cursor-pointer">↓</div>
-    //     </div>
+    <>
+      <div className="flex relative font-garamond">
+        <div
+          className=" w-[50px] py-10 gap-3 items-center border-[2.5px] border-gray-900 
+        justify-between flex flex-col bg-[#F6F1EB] "
+        >
+          <div>
+            <img src={arrowDown} className="h-[200px]" alt="" />
+          </div>
+          <div>
+            <FaInstagram className="text-gray-900 " />
+          </div>
+          <div>
+            <FaTwitter className="text-gray-900 " />
+          </div>
+          <div>
+            <FaFacebook className="text-gray-900 " />
+          </div>
+          <div>
+            <img src={arrowUp} className="h-[200px]" alt="" />
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div
+            className=" border-[2.5px] border-gray-900 border-l-0 border-b-0
+           h-[300px] w-[150px] z-2 bg-[#C7AE86] flex pt-3 pl-3 font-bold text-lg"
+          >
+            <div className="flex text-[#343A32] gap-2 ">
+              SoftGlow
+              <span>{/* <FaStar className="text-yellow-400" /> */}</span>
+            </div>
+          </div>
+          <div
+            className="w-[400px] bg-[#F6F1EB] border-l-0 border-[2.5px]
+           border-gray-900 h-[350px] flex flex-col gap-2 p-10"
+          >
+            <div>
+              <FaQuoteLeft />
+            </div>
+            <div className="font-bold text-xl mt-5">
+              Skin care isn't a luxury; it's your daily commitment to nurturing
+              you runique beauty.
+            </div>
+            <div className="flex gap-2 items-center font-bold items-center cursor-pointer justify-center mt-5 px-5 py-3 bg-[#C7AE86] text-[#343A32] w-[200px] border-lg rounded-lg border-[5px] border-l-0 border-r-0 border-t-0 border-[#343A32]">
+              Get In Touch{" "}
+              <span>
+                <FaArrowRight />
+              </span>
+            </div>
 
-    //     {/* Main Content */}
-    //     <div className="lg:col-span-11 grid grid-cols-1 lg:grid-cols-3 gap-6">
-    //       {/* Text Content */}
-    //       <div className="col-span-2 flex flex-col justify-center">
-    //         <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
-    //           Window to <br /> Radiant Beauty and <br /> Confidence
-    //         </h1>
+            <div className="flex items-center  mt-8">
+              {" "}
+              {imagesSide.map((item) => (
+                <div key={item.id} className="-ml-[10px]">
+                  <img src={item.images} alt={"images"} className="w-10 h-10" />
+                </div>
+              ))}
+              <div className="ml-2">500+ Happy Clients</div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="absolute bg-[#F6F1EB] top-0 bottom-[0px] 
+        z-[-1]  left-[190px] mt-20 right-[0px] h-[220px] items-center flex  text-[#343A32]"
+        >
+          <div className="pl-[100px] font-bold text-5xl text-center w-[500px]">
+            Window to Radiant Beauty and confidence
+          </div>
+        </div>
+        <div
+          className="absolute bg-[#F6F1EB] top-0 bottom-[0px] border-[2.5px] border-r-0
+        border-gray-900 border-t-0 border-b-0 left-[800px] mt-20 right-[0px] h-[220px]"
+        >
+          <div className="flex flex-col py-2 items-center">
+            <div>
+              <img src={star} className="pt-5" alt="" />
+            </div>
+            <div className="-ml-20">
+              <img src={star} className="w-10 h-10 " alt="" />
+            </div>
+          </div>
+        </div>
+        <div
+          className="absolute top-0 right-0 bottom-0 left-[200px] 
+    border-2 border-gray-800 border-l-0 h-20 w-[945px] 
+    flex items-center gap-10 justify-end px-3"
+        >
+          <div className="cursor-pointer">Services</div>
+          <div className="cursor-pointer">Blog</div>
+          <div className="cursor-pointer">Contact Us</div>
+          <div className="cursor-pointer">About Us</div>
 
-    //         {/* Play Button */}
-    //         <div className="relative flex items-center justify-start mb-6">
-    //           <div className="w-16 h-16 rounded-full bg-[#E9D5B3] flex items-center justify-center shadow-lg">
-    //             <BsPlayFill className="text-2xl text-gray-800" />
-    //           </div>
-    //           <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 -rotate-90 text-[10px] text-gray-500 tracking-wider">
-    //             Your Destination for Beautiful Hair and Glowing Skin
-    //           </div>
-    //         </div>
+          <div className="h-full border-l border-gray-800 flex items-center pl-3">
+            <IoSearch className="w-10 h-10 cursor-pointer" />
+          </div>
+        </div>
 
-    //         {/* Quote */}
-    //         <blockquote className="border-l-4 pl-4 italic text-gray-700 text-lg mb-6">
-    //           Skin care isn't a luxury; it's your daily commitment to nurturing
-    //           your unique beauty.
-    //         </blockquote>
+        <div className="absolute flex bottom-1/3 mb-[80px] -ml-[5px] left-[150px]">
+          <img src={buttonContainerImg} alt="" className="w-[140px]" />
+        </div>
+        <div
+          className="absolute top-30 bottom-[0px] border-[2.5px] border-gray-900
+         flex flex-end justify-center border-l-0 border-r-0  bg-[#E6C59C] 
+        left-[450px] right-[0px] h-[350px]"
+        >
+          <img src={woman} alt="" className="h-[450px] -mt-[104px]" />
+        </div>
+      </div>
 
-    //         {/* CTA Button */}
-    //         <button className="flex items-center gap-2 bg-[#D6B169] text-gray-900 px-6 py-3 rounded-md shadow hover:bg-[#c49f4f] transition">
-    //           Get In Touch <HiOutlineArrowNarrowRight />
-    //         </button>
-
-    //         {/* Clients */}
-    //         <div className="flex items-center space-x-2 mt-6">
-    //           <img
-    //             src={client1}
-    //             alt="Client 1"
-    //             className="w-8 h-8 rounded-full"
-    //           />
-    //           <img
-    //             src={client2}
-    //             alt="Client 2"
-    //             className="w-8 h-8 rounded-full"
-    //           />
-    //           <img
-    //             src={client3}
-    //             alt="Client 3"
-    //             className="w-8 h-8 rounded-full"
-    //           />
-    //           <span className="text-sm text-gray-600">5000+ Happy Clients</span>
-    //         </div>
-    //       </div>
-
-    //       {/* Image */}
-    //       <div className="col-span-1">
-    //         <img
-    //           src={woman}
-    //           alt="Skincare woman"
-    //           className="w-full h-auto object-cover rounded-xl"
-    //         />
-    //       </div>
-    //     </div>
-    //   </div>
-    // </section>
-    <>Hello</>
+      {/* Bottom Tab */}
+      <div className="flex justify-between font-bold text-2xl px-10 font-garamond bg-[#F6F1EB] py-5 border-[2.5px] border-l-0 border-r-0 border-t-0 border-gray-900">
+        <div>
+          Elevate <span className="text-[#936E4E]">Beauty</span>{" "}
+        </div>
+        <div>
+          Elevate <span className="text-[#936E4E]">Confidence</span>{" "}
+        </div>
+        <div>
+          Elevate <span className="text-[#936E4E]">Beauty</span>{" "}
+        </div>
+        <div>
+          Elevate <span className="text-[#936E4E]">Confidence</span>{" "}
+        </div>
+      </div>
+    </>
   );
 }
 
