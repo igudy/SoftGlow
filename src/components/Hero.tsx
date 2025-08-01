@@ -5,16 +5,16 @@ import {
   FaQuoteLeft,
   FaArrowRight,
 } from "react-icons/fa";
-import woman from "../../public/images/woman.png";
-import arrowUp from "../../public/icons/arrow-down.png";
-import arrowDown from "../../public/icons/arrow-up.png";
-import star from "../../public/icons/star.png";
+import woman from "../assets/images/woman.png";
+import arrowUp from "../assets/icons/arrow-down.png";
+import arrowDown from "../assets/icons/arrow-up.png";
+import star from "../assets/icons/star.png";
 import { IoSearch } from "react-icons/io5";
-import img1 from "../../public/images/img1.png";
-import img2 from "../../public/images/img2.png";
-import img3 from "../../public/images/img3.png";
-import img4 from "../../public/images/img4.png";
-import buttonContainerImg from "../../public/images/buttonContainer.png";
+import img1 from "../assets/images/img1.png";
+import img2 from "../assets/images/img2.png";
+import img3 from "../assets/images/img3.png";
+import img4 from "../assets/images/img4.png";
+import buttonContainerImg from "../assets/images/buttonContainer.png";
 
 const imagesSide = [
   {
@@ -64,10 +64,7 @@ function Hero() {
             className=" border-[2.5px] border-gray-900 border-l-0 border-b-0
            h-[300px] w-[150px] z-2 bg-[#C7AE86] flex pt-3 pl-3 font-bold text-lg"
           >
-            <div className="flex text-[#343A32] gap-2 ">
-              SoftGlow
-              <span>{/* <FaStar className="text-yellow-400" /> */}</span>
-            </div>
+            <div className="flex text-[#343A32] gap-2 ">SoftGlow</div>
           </div>
           <div
             className="w-[400px] bg-[#F6F1EB] border-l-0 border-[2.5px]
@@ -80,7 +77,12 @@ function Hero() {
               Skin care isn't a luxury; it's your daily commitment to nurturing
               you runique beauty.
             </div>
-            <div className="flex gap-2 items-center font-bold items-center cursor-pointer justify-center mt-5 px-5 py-3 bg-[#C7AE86] text-[#343A32] w-[200px] border-lg rounded-lg border-[5px] border-l-0 border-r-0 border-t-0 border-[#343A32]">
+            <div
+              className="flex gap-2 items-center font-bold items-center cursor-pointer 
+              justify-center mt-5 px-5 py-3
+              bg-[#C7AE86] text-[#343A32] w-[200px] border-lg rounded-lg border-[5px]
+              border-l-0 border-r-0 border-t-0 border-[#343A32]"
+            >
               Get In Touch{" "}
               <span>
                 <FaArrowRight />
@@ -121,8 +123,8 @@ function Hero() {
         </div>
         <div
           className="absolute top-0 right-0 bottom-0 left-[200px] 
-    border-2 border-gray-800 border-l-0 h-20 w-[945px] 
-    flex items-center gap-10 justify-end px-3"
+          border-2 border-gray-800 border-l-0 h-20 w-[945px] 
+          flex items-center gap-10 justify-end px-3"
         >
           <div className="cursor-pointer">Services</div>
           <div className="cursor-pointer">Blog</div>
@@ -147,7 +149,11 @@ function Hero() {
       </div>
 
       {/* Bottom Tab */}
-      <div className="flex justify-between font-bold text-2xl px-10 font-garamond bg-[#F6F1EB] py-5 border-[2.5px] border-l-0 border-r-0 border-t-0 border-gray-900">
+      <div
+        className="flex justify-between font-bold text-2xl px-10 font-garamond 
+        bg-[#F6F1EB] py-5 border-[2.5px] border-l-0 border-r-0 border-t-0 
+        border-gray-900"
+      >
         <div>
           Elevate <span className="text-[#936E4E]">Beauty</span>{" "}
         </div>
