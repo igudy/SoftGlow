@@ -21,11 +21,13 @@ const FirstSection = () => {
           <span className="font-bold">Years of Experience: </span>Benefit from
           our years of industry experience.
         </div>
+
         <div className="flex gap-2 items-center">
           <FaCheck className="bg-[#C7AE86] p-1 rounded-lg shadow-sm" />{" "}
           <span className="font-bold">Commitment to Excellence: </span>Benefit
           from our years of industry experience.
         </div>
+
         <div className="flex gap-2 items-center mb-10">
           <FaCheck className="bg-[#C7AE86] p-1 rounded-lg shadow-sm" />{" "}
           <span className="font-bold">Personalized Beauty Experience: </span>

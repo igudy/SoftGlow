@@ -14,6 +14,7 @@ const sliderImg = [
   },
   { id: 4, img: services4, title: "Hand Massage", name: "service-image4" },
 ];
+
 const SpecialService = () => {
   return (
     <div className="bg-[#EBD5C8] py-10 px-10 w-full flex flex-col mx-auto gap-10 items-center justify-center border-b-[2.5px] border-gray-900">

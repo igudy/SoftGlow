@@ -122,9 +122,8 @@ function Hero() {
           </div>
         </div>
         <div
-          className="absolute top-0 right-0 bottom-0 left-[200px] 
-          border-2 border-gray-800 border-l-0 h-20 w-[945px] 
-          flex items-center gap-10 justify-end px-3"
+          className="absolute top-0 left-[200px] right-0
+             border-2 border-gray-800 border-l-0 h-20 flex items-center justify-end gap-10 px-3"
         >
           <div className="cursor-pointer">Services</div>
           <div className="cursor-pointer">Blog</div>
@@ -132,7 +131,7 @@ function Hero() {
           <div className="cursor-pointer">About Us</div>
 
           <div className="h-full border-l border-gray-800 flex items-center pl-3">
-            <IoSearch className="w-10 h-10 cursor-pointer" />
+            <IoSearch className="w-8 h-8 cursor-pointer" />
           </div>
         </div>
 

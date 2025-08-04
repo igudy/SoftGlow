@@ -1,4 +1,3 @@
-import React from "react";
 import prettyImg from "../assets/images/prettyTwo.png";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
