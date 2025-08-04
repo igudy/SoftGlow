@@ -31,69 +31,69 @@ const articles = [
 
 const BeautyInsights = () => {
   return (
-    <>
-      <section className="max-w-6xl mx-auto border-t-2 border-gray-900 bg-[#EBD5C8] px-12 py-12">
-        {/* HEADER */}
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-4xl font-semibold">
-            Beauty and Wellness Insights
-          </h2>
-          <button className="px-8 py-2 rounded-lg border-2 bg-[#EBD5C9] border-b-[12px] border-gray-900 hover:bg-gray-100 transition">
-            See All
-          </button>
+    <section className="mx-auto border-t-2 border-gray-900 bg-[#EBD5C8] px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
+      {/* HEADER */}
+      <div className="flex sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+          Beauty and Wellness Insights
+        </h2>
+        <button className="px-6 sm:px-8 py-2 rounded-lg border-2 bg-[#EBD5C9] border-b-[8px] sm:border-b-[12px] border-gray-900 hover:bg-gray-100 transition text-sm sm:text-base">
+          See All
+        </button>
+      </div>
+
+      {/* MAIN CONTENT LAYOUT */}
+      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
+        {/* LEFT (MAIN) ARTICLE */}
+        <div className="lg:w-1/2 border bg-[#F6F1EB] border-gray-900 border-b-[8px] sm:border-b-[12px] rounded-xl sm:rounded-2xl flex flex-col">
+          <img
+            src={articles[0].image}
+            alt={articles[0].title}
+            className="w-full h-48 sm:h-64 object-cover rounded-t-xl sm:rounded-t-2xl"
+          />
+          <div className="p-3 sm:p-4">
+            <h3 className="font-semibold text-lg sm:text-xl mb-3 sm:mb-4">
+              {articles[0].title}
+            </h3>
+            <p className="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4 line-clamp-3 sm:line-clamp-none">
+              {articles[0].longDesc}
+            </p>
+            <button className="px-4 sm:px-5 py-1 sm:py-2 rounded-lg shadow-sm bg-gray-100 hover:bg-gray-200 transition text-sm sm:text-base self-start">
+              Continue Reading →
+            </button>
+          </div>
         </div>
 
-        {/* MAIN CONTENT LAYOUT */}
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* LEFT (MAIN) ARTICLE */}
-          <div className="md:w-1/2 border bg-[#F6F1EB] border-gray-900 border-b-[12px] rounded-2xl flex flex-col">
-            <img
-              src={articles[0].image}
-              alt={articles[0].title}
-              className="w-full h-64 object-cover rounded-t-2xl mb-6"
-            />
-            <div className="p-3">
-              <h3 className="font-semibold text-xl mb-4">
-                {articles[0].title}
-              </h3>
-              <p className="text-gray-600 mb-4">{articles[0].longDesc}</p>
-              <button className="mt-auto px-5 py-2 rounded-lg shadow-sm bg-gray-100 hover:bg-gray-200 transition self-start">
-                Continue Reading →
-              </button>
-            </div>
-          </div>
-
-          {/* RIGHT (3 SMALLER) ARTICLES */}
-          <div className="md:w-1/2 flex flex-col justify-between gap-6">
-            {articles.slice(1, 4).map((item, index) => (
-              <div
-                key={index}
-                className="border bg-[#F6F1EB] border-gray-900 border-b-[9px] rounded-2xl flex h-[180px]"
-              >
-                <div className="w-[180px] flex-shrink-0">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover rounded-l-2xl"
-                  />
-                </div>
-                <div className="p-4 flex flex-col">
-                  <h3 className="font-semibold text-lg line-clamp-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mt-2 line-clamp-2">
-                    {item.desc}
-                  </p>
-                  <button className="mt-auto text-sm font-medium text-gray-700 hover:underline self-start">
-                    Read More →
-                  </button>
-                </div>
+        {/* RIGHT (3 SMALLER) ARTICLES */}
+        <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-6">
+          {articles.slice(1, 4).map((item, index) => (
+            <div
+              key={index}
+              className="border bg-[#F6F1EB] border-gray-900 border-b-[6px] sm:border-b-[9px] rounded-xl sm:rounded-2xl flex flex-col sm:flex-row h-auto sm:h-[180px]"
+            >
+              <div className="w-full sm:w-[180px] h-40 sm:h-full flex-shrink-0">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover rounded-t-xl sm:rounded-l-2xl sm:rounded-bl-lg sm:rounded-tr-none"
+                />
               </div>
-            ))}
-          </div>
+              <div className="p-3 sm:p-4 flex flex-col flex-grow">
+                <h3 className="font-semibold text-base sm:text-lg line-clamp-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm mt-1 sm:mt-2 line-clamp-2">
+                  {item.desc}
+                </p>
+                <button className="mt-2 sm:mt-auto text-xs sm:text-sm font-medium text-gray-700 hover:underline self-start">
+                  Read More →
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

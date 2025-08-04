@@ -37,41 +37,53 @@ const Questions = () => {
   };
 
   return (
-    <>
-      <section className="max-w-2xl mx-auto px-6 py-12">
-        <h2 className="text-3xl font-semibold text-center mb-3">
+    <section className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div className="text-center mb-6 sm:mb-8">
+        <h2 className="text-2xl sm:text-3xl font-semibold mb-2 sm:mb-3">
           Questions? We Have Answers.
         </h2>
-        <p className="text-center text-gray-600 mb-8">
+        <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto">
           Explore our FAQ section for quick answers to common inquiries about
           our services, appointments, and more. Your beauty journey begins here.
         </p>
+      </div>
 
-        <div className="space-y-4">
-          {faqs.map((item, index) => (
-            <div
-              key={index}
-              className="border border-b-[10px] border-gray-900 bg-[#F6F1EB] rounded-xl"
+      <div className="space-y-3 sm:space-y-4">
+        {faqs.map((item, index) => (
+          <div
+            key={index}
+            className="border border-b-[6px] sm:border-b-[10px] border-gray-900 bg-[#F6F1EB] rounded-lg sm:rounded-xl overflow-hidden"
+          >
+            <button
+              onClick={() => toggle(index)}
+              className="w-full flex items-center justify-between px-4 py-3 sm:py-4 text-left hover:bg-[#EBD5C8] transition-colors duration-200"
+              aria-expanded={openIndex === index}
+              aria-controls={`faq-${index}`}
             >
-              <button
-                onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between px-4 py-4 text-left"
-              >
-                <span className="font-medium">{item.question}</span>
-                {openIndex === index ? (
-                  <FiMinus size={18} />
-                ) : (
-                  <FiPlus size={18} />
-                )}
-              </button>
-              {openIndex === index && (
-                <div className="px-4 pb-4 text-gray-600">{item.answer}</div>
+              <span className="font-medium text-sm sm:text-base text-left">
+                {item.question}
+              </span>
+              {openIndex === index ? (
+                <FiMinus className="text-gray-700 flex-shrink-0" size={18} />
+              ) : (
+                <FiPlus className="text-gray-700 flex-shrink-0" size={18} />
               )}
+            </button>
+
+            <div
+              id={`faq-${index}`}
+              className={`px-4 overflow-hidden transition-all duration-300 ease-in-out ${
+                openIndex === index ? "max-h-40 pb-4" : "max-h-0"
+              }`}
+            >
+              <p className="text-sm sm:text-base text-gray-600">
+                {item.answer}
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-    </>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

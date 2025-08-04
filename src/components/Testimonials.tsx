@@ -29,34 +29,43 @@ const avatar = [
 
 const Testimonials = () => {
   return (
-    <div className="bg-[#EBD5C8] py-[70px] px-10 mb-10 w-full border-b-[2.5px] border-gray-900">
+    <div className="bg-[#EBD5C8] py-10 md:py-[70px] px-4 md:px-10 mb-10 w-full border-b-[2.5px] border-gray-900">
       <div className="flex items-center gap-2 w-full">
         <FaQuoteLeft className="text-xl shrink-0" />
-        <span className="flex text-2xl">Testimonials</span>
+        <span className="flex text-xl md:text-2xl">Testimonials</span>
         <div className="h-[1.5px] bg-gray-900 flex-1" />
       </div>
-      <div className="flex gap-6 mt-[100px] w-full ">
-        {avatar.map((item) => (
-          <div
-            key={item.id}
-            className="border-[2.5px] relative p-6 border-b-[8px] border-gray-900 rounded-lg min-h-[300px] flex-1 flex flex-col"
-          >
-            <div className="flex-grow">
-              <p className="text-lg mt-[50px]">{item.text}</p>
-            </div>
-            <div className="mt-auto pt-4">
-              <div className="flex gap-2 items-baseline">
-                <span className="font-bold">{item.name} / </span>
-                <span className="text-sm font-thin">{item.serviceOffered}</span>
+
+      <div className="mt-12 md:mt-[100px] w-full pb-6">
+        <div className="grid grid-cols-1 mx-auto md:grid md:grid-cols-3 gap-4 md:gap-6 w-max md:w-full">
+          {avatar.map((item) => (
+            <div
+              key={item.id}
+              className="border-[2.5px] relative p-4 md:p-6 mt-10 md:mt-0 border-b-[8px] border-gray-900 rounded-lg min-h-[280px] md:min-h-[300px] w-[280px] md:w-auto flex-shrink-0 flex flex-col"
+            >
+              <div className="flex-grow">
+                <p className="text-sm md:text-lg mt-12 md:mt-[50px]">
+                  {item.text}
+                </p>
               </div>
+              <div className="mt-auto pt-4">
+                <div className="flex gap-2 items-baseline">
+                  <span className="font-bold text-sm md:text-base">
+                    {item.name} /
+                  </span>
+                  <span className="text-xs md:text-sm font-thin">
+                    {item.serviceOffered}
+                  </span>
+                </div>
+              </div>
+              <img
+                src={item.img}
+                className="absolute left-0 w-[80px] md:w-[100px] ml-4 md:ml-7 -top-8 md:-top-[40px]"
+                alt={item.name}
+              />
             </div>
-            <img
-              src={item.img}
-              className="absolute left-0 w-[100px] ml-7 -top-[40px]"
-              alt={item.name}
-            />
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

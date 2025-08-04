@@ -1,19 +1,24 @@
+import { useState, useEffect } from "react";
 import {
   FaInstagram,
   FaTwitter,
   FaFacebook,
   FaQuoteLeft,
   FaArrowRight,
+  FaBars,
+  FaTimes,
+  FaLeaf,
 } from "react-icons/fa";
 import woman from "../assets/images/woman.png";
-import arrowUp from "../assets/icons/arrow-down.png";
-import arrowDown from "../assets/icons/arrow-up.png";
+import arrowUp from "../assets/icons/arrow-up.png";
+import arrowDown from "../assets/icons/arrow-down.png";
 import star from "../assets/icons/star.png";
 import { IoSearch } from "react-icons/io5";
 import img1 from "../assets/images/img1.png";
 import img2 from "../assets/images/img2.png";
 import img3 from "../assets/images/img3.png";
 import img4 from "../assets/images/img4.png";
+import { motion, AnimatePresence } from "framer-motion";
 import buttonContainerImg from "../assets/images/buttonContainer.png";
 
 const imagesSide = [
@@ -36,24 +41,171 @@ const imagesSide = [
 ];
 
 function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className="font-garamond relative">
+        {/* Mobile Header */}
+        <div className="flex justify-between items-center p-4 border-b-2 border-gray-900 bg-[#F6F1EB]">
+          <div className="font-bold text-lg text-[#343A32]">SoftGlow</div>
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? (
+              <FaTimes className="text-2xl" />
+            ) : (
+              <FaBars className="text-2xl" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu with Framer Motion - Now takes 50% width */}
+        <AnimatePresence>
+          {menuOpen && (
+            <>
+              {/* Overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setMenuOpen(false)}
+                className="fixed inset-0 bg-black z-40"
+              />
+
+              {/* Sidebar */}
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: "0%" }}
+                exit={{ x: "100%" }}
+                transition={{ type: "tween", ease: "easeInOut" }}
+                className="fixed top-0 right-0 w-1/2 h-full bg-[#F6F1EB] z-50 pt-16 px-6 border-l-2 border-gray-900"
+              >
+                <div className="flex flex-col gap-8 h-full">
+                  <div className="flex flex-col gap-6">
+                    <a
+                      href="#"
+                      className="text-xl font-bold hover:text-[#936E4E] transition-colors"
+                    >
+                      Services
+                    </a>
+                    <a
+                      href="#"
+                      className="text-xl font-bold hover:text-[#936E4E] transition-colors"
+                    >
+                      Blog
+                    </a>
+                    <a
+                      href="#"
+                      className="text-xl font-bold hover:text-[#936E4E] transition-colors"
+                    >
+                      Contact Us
+                    </a>
+                    <a
+                      href="#"
+                      className="text-xl font-bold hover:text-[#936E4E] transition-colors"
+                    >
+                      About Us
+                    </a>
+                    <div className="flex items-center gap-4 text-lg mt-4">
+                      <IoSearch />
+                      <span>Search</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-center gap-6 mt-auto mb-8">
+                    <FaInstagram className="text-xl hover:text-[#936E4E] transition-colors" />
+                    <FaTwitter className="text-xl hover:text-[#936E4E] transition-colors" />
+                    <FaFacebook className="text-xl hover:text-[#936E4E] transition-colors" />
+                  </div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+
+        {/* Mobile Hero Content */}
+        <div className="relative bg-[#F6F1EB] p-6">
+          <div className="text-center mb-6">
+            <h1 className="font-bold text-3xl text-[#343A32] mb-4">
+              Window to Radiant Beauty and Confidence
+            </h1>
+            <div className="flex justify-center mb-4">
+              <FaQuoteLeft />
+            </div>
+            <p className="font-bold text-lg mb-6">
+              Skin care isn't a luxury; it's your daily commitment to nurturing
+              your unique beauty.
+            </p>
+            <button
+              className="flex gap-2 items-center font-bold justify-center mx-auto 
+              px-6 py-3 bg-[#C7AE86] text-[#343A32] rounded-lg border-b-4 border-[#343A32]
+              hover:bg-[#936E4E] hover:text-white transition-colors duration-300"
+            >
+              Get In Touch <FaArrowRight />
+            </button>
+          </div>
+
+          {/* Added a nature-inspired decorative element */}
+          <div className="flex justify-center mb-8">
+            <div className="flex items-center gap-2 text-[#936E4E]">
+              <FaLeaf className="text-xl" />
+              <span className="text-sm font-bold">NATURAL INGREDIENTS</span>
+              <FaLeaf className="text-xl" />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center mb-8">
+            {imagesSide.map((item) => (
+              <div key={item.id} className="-ml-2">
+                <img src={item.images} alt="Client" className="w-8 h-8" />
+              </div>
+            ))}
+            <div className="ml-2">500+ Happy Clients</div>
+          </div>
+        </div>
+
+        {/* Mobile Bottom Tab */}
+        <div className="bg-[#F6F1EB] py-4 border-t-2 border-gray-900">
+          <div className="flex flex-col items-center gap-2 font-bold text-lg">
+            <div>
+              Elevate <span className="text-[#936E4E]">Beauty</span>
+            </div>
+            <div>
+              Elevate <span className="text-[#936E4E]">Confidence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  // Desktop Version (original with small fixes)
   return (
     <>
       <div className="flex relative font-garamond">
         <div
-          className=" w-[50px] py-10 gap-3 items-center border-[2.5px] border-gray-900 
-        justify-between flex flex-col bg-[#F6F1EB] "
+          className="w-[50px] py-10 gap-3 items-center border-[2.5px] border-gray-900 
+        justify-between flex flex-col bg-[#F6F1EB]"
         >
           <div>
             <img src={arrowDown} className="h-[200px]" alt="" />
           </div>
           <div>
-            <FaInstagram className="text-gray-900 " />
+            <FaInstagram className="text-gray-900" />
           </div>
           <div>
-            <FaTwitter className="text-gray-900 " />
+            <FaTwitter className="text-gray-900" />
           </div>
           <div>
-            <FaFacebook className="text-gray-900 " />
+            <FaFacebook className="text-gray-900" />
           </div>
           <div>
             <img src={arrowUp} className="h-[200px]" alt="" />
@@ -61,10 +213,10 @@ function Hero() {
         </div>
         <div className="flex flex-col">
           <div
-            className=" border-[2.5px] border-gray-900 border-l-0 border-b-0
+            className="border-[2.5px] border-gray-900 border-l-0 border-b-0
            h-[300px] w-[150px] z-2 bg-[#C7AE86] flex pt-3 pl-3 font-bold text-lg"
           >
-            <div className="flex text-[#343A32] gap-2 ">SoftGlow</div>
+            <div className="flex text-[#343A32] gap-2">SoftGlow</div>
           </div>
           <div
             className="w-[400px] bg-[#F6F1EB] border-l-0 border-[2.5px]
@@ -75,7 +227,7 @@ function Hero() {
             </div>
             <div className="font-bold text-xl mt-5">
               Skin care isn't a luxury; it's your daily commitment to nurturing
-              you runique beauty.
+              your unique beauty.
             </div>
             <div
               className="flex gap-2 items-center font-bold items-center cursor-pointer 
@@ -89,8 +241,7 @@ function Hero() {
               </span>
             </div>
 
-            <div className="flex items-center  mt-8">
-              {" "}
+            <div className="flex items-center mt-8">
               {imagesSide.map((item) => (
                 <div key={item.id} className="-ml-[10px]">
                   <img src={item.images} alt={"images"} className="w-10 h-10" />
@@ -102,7 +253,7 @@ function Hero() {
         </div>
         <div
           className="absolute bg-[#F6F1EB] top-0 bottom-[0px] 
-        z-[-1]  left-[190px] mt-20 right-[0px] h-[220px] items-center flex  text-[#343A32]"
+        z-[-1] left-[190px] mt-20 right-[0px] h-[220px] items-center flex text-[#343A32]"
         >
           <div className="pl-[100px] font-bold text-5xl text-center w-[500px]">
             Window to Radiant Beauty and confidence
@@ -117,7 +268,7 @@ function Hero() {
               <img src={star} className="pt-5" alt="" />
             </div>
             <div className="-ml-20">
-              <img src={star} className="w-10 h-10 " alt="" />
+              <img src={star} className="w-10 h-10" alt="" />
             </div>
           </div>
         </div>
@@ -140,7 +291,7 @@ function Hero() {
         </div>
         <div
           className="absolute top-30 bottom-[0px] border-[2.5px] border-gray-900
-         flex flex-end justify-center border-l-0 border-r-0  bg-[#E6C59C] 
+         flex flex-end justify-center border-l-0 border-r-0 bg-[#E6C59C] 
         left-[450px] right-[0px] h-[350px]"
         >
           <img src={woman} alt="" className="h-[450px] -mt-[104px]" />
@@ -154,16 +305,16 @@ function Hero() {
         border-gray-900"
       >
         <div>
-          Elevate <span className="text-[#936E4E]">Beauty</span>{" "}
+          Elevate <span className="text-[#936E4E]">Beauty</span>
         </div>
         <div>
-          Elevate <span className="text-[#936E4E]">Confidence</span>{" "}
+          Elevate <span className="text-[#936E4E]">Confidence</span>
         </div>
         <div>
-          Elevate <span className="text-[#936E4E]">Beauty</span>{" "}
+          Elevate <span className="text-[#936E4E]">Beauty</span>
         </div>
         <div>
-          Elevate <span className="text-[#936E4E]">Confidence</span>{" "}
+          Elevate <span className="text-[#936E4E]">Confidence</span>
         </div>
       </div>
     </>
